@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa de Interconectividad en la Nube</title>
+    <style>
+        #map {
+            height: 500px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mapa de Interconectividad en la Nube para Centros de Salud y Hospitales</h1>
+    <div id="map"></div>
+
+    <script>
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 6,
+                center: {lat: -34.397, lng: 150.644}
+            });
+
+            var markers = [
+                {position: {lat: -34.397, lng: 150.644}, title: 'Centro de Salud A'},
+                {position: {lat: -35.297, lng: 149.644}, title: 'Centro de Salud B'},
+                {position: {lat: -33.397, lng: 151.644}, title: 'Hospital A'},
+                {position: {lat: -32.397, lng: 150.644}, title: 'Hospital B'}
+            ];
+
+            markers.forEach(function(markerInfo) {
+                var marker = new google.maps.Marker({
+                    position: markerInfo.position,
+                    map: map,
+                    title: markerInfo.title
+                });
+            });
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+</body>
+</html>
